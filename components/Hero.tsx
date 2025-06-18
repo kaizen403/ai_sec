@@ -14,12 +14,12 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-[#060A17] via-[#0A0F1F] to-[#1A1B3A] overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-[#0B0E15] via-[#0F141A] to-[#161C22] overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/5 to-slate-500/5 rounded-full blur-3xl"></div>
       </div>
 
       {/* Floating Icons */}
@@ -38,9 +38,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className={`absolute hidden lg:block ${
-            index % 2 === 0 ? 'text-blue-400' : 'text-purple-400'
-          }`}
+          className="absolute hidden lg:block text-blue-400"
           style={{
             left: `${15 + (index * 15)}%`,
             top: `${20 + (index * 10)}%`,
@@ -50,7 +48,7 @@ export default function Hero() {
         </motion.div>
       ))}
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         <div className="text-center">
           {/* Main Heading */}
           <motion.div
@@ -59,8 +57,8 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="mb-8"
           >
-            <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-purple-200 mb-6 leading-tight"
+            <motion.h1
+              className="text-3xl md:text-5xl lg:text-6xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-6 leading-tight tracking-tight"
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -74,8 +72,8 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="relative"
             >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-pink-400 to-purple-400 mb-8 leading-tight">
-                Fire Your Secretary
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 mb-8 leading-tight tracking-tight">
+                <span className="fire-underline">Fire</span> Your Secretary
               </h1>
             </motion.div>
           </motion.div>
@@ -85,7 +83,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-lexend"
+            className="text-lg md:text-xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-lexend"
           >
             Forge genuine connections—calls, texts, reminders, and answers that feel human.
             <span className="block mt-2 text-blue-400 font-medium">
@@ -103,14 +101,14 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)" }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-full text-lg shadow-2xl overflow-hidden font-lexend"
+              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-slate-700 text-white font-bold rounded-full text-lg shadow-2xl overflow-hidden font-lexend"
             >
               <span className="relative z-10 flex items-center gap-2">
                 <Bot className="w-5 h-5" />
                 Get Your AI Secretary
               </span>
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500"
+                className="absolute inset-0 bg-gradient-to-r from-blue-500 to-slate-600"
                 initial={{ scale: 0, rotate: 180 }}
                 whileHover={{ scale: 1, rotate: 0 }}
                 transition={{ duration: 0.3 }}
