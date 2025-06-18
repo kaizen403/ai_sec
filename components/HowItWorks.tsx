@@ -9,33 +9,29 @@ const steps = [
     number: '01',
     icon: Phone,
     title: 'Connect Your Phone',
-    description: 'Get your dedicated AI Secretary phone number. Share it with clients, colleagues, and contacts.',
-    details: ['Instant setup in under 2 minutes', 'Works with any phone system', 'Professional voicemail greeting'],
-    color: 'from-blue-500 to-cyan-500',
+    description:
+      'Grab your dedicated AI Secretary number and share it with your contacts.',
   },
   {
     number: '02',
     icon: Calendar,
     title: 'Sync Your Calendar',
-    description: 'Connect your existing calendar (Google, Outlook, Apple). Your AI Secretary sees your availability in real-time.',
-    details: ['Two-way calendar sync', 'Respects your preferences', 'Handles time zones automatically'],
-    color: 'from-purple-500 to-pink-500',
+    description:
+      'Link Google or Outlook so your availability is always up to date.',
   },
   {
     number: '03',
     icon: Brain,
-    title: 'Train Your Preferences',
-    description: 'Tell your AI Secretary about your meeting preferences, availability, and communication style.',
-    details: ['Natural language setup', 'Learns from every interaction', 'Adapts to your schedule patterns'],
-    color: 'from-green-500 to-emerald-500',
+    title: 'Train Preferences',
+    description:
+      'Teach your AI Secretary how and when you like to meet or respond.',
   },
   {
     number: '04',
     icon: MessageSquare,
     title: 'Start Delegating',
-    description: 'Your AI Secretary handles calls, texts, scheduling, and reminders while you focus on what matters.',
-    details: ['24/7 availability', 'Human-like conversations', 'Seamless handoffs when needed'],
-    color: 'from-orange-500 to-red-500',
+    description:
+      'Let your AI handle calls, texts and reminders while you focus.',
   },
 ];
 
@@ -117,18 +113,18 @@ const CallAnimation = () => {
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 mb-6 p-4 bg-purple-500/20 rounded-2xl border border-purple-500/30"
+            className="flex items-center gap-4 mb-6 p-4 bg-yellow-500/20 rounded-2xl border border-yellow-500/30"
           >
-            <Brain className="w-8 h-8 text-purple-400" />
+            <Brain className="w-8 h-8 text-yellow-400" />
             <div className="flex-1">
               <p className="text-white font-semibold font-lexend">AI Processing</p>
               <div className="flex items-center gap-2 mt-2">
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="w-4 h-4 border-2 border-purple-400 border-t-transparent rounded-full"
+                  className="w-4 h-4 border-2 border-yellow-400 border-t-transparent rounded-full"
                 />
-                <p className="text-purple-300 text-sm font-lexend">Checking calendar availability...</p>
+                <p className="text-yellow-300 text-sm font-lexend">Checking calendar availability...</p>
               </div>
             </div>
           </motion.div>
@@ -169,7 +165,7 @@ const CallAnimation = () => {
             whileInView={{ pathLength: 1 }}
             transition={{ duration: 2, delay: 0.5 }}
             viewport={{ once: true }}
-            className="absolute left-8 top-16 bottom-16 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 via-green-400 to-orange-400 opacity-50"
+            className="absolute left-8 top-16 bottom-16 w-0.5 bg-gradient-to-b from-blue-400 via-yellow-400 via-green-400 to-orange-400 opacity-50"
           />
         </div>
       </div>
@@ -194,7 +190,7 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-lexend font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200 mb-6">
+          <h2 className="text-5xl md:text-6xl font-lexend font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-6">
             How It Works
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-lexend">
@@ -206,65 +202,33 @@ export default function HowItWorks() {
         <CallAnimation />
 
         {/* Steps */}
-        <div ref={ref} className="mb-20">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20">
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`flex flex-col lg:flex-row items-center gap-12 mb-16 ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
+              whileHover={{ scale: 1.05 }}
+              className="flex flex-col items-center text-center space-y-4 bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-blue-500/40"
             >
-              {/* Content */}
-              <div className="flex-1 space-y-6">
-                <div className="flex items-center gap-4">
-                  <span className={`text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r ${step.color} font-lexend`}>
-                    {step.number}
-                  </span>
-                  <div className={`p-4 rounded-2xl bg-gradient-to-r ${step.color}`}>
-                    <step.icon className="w-8 h-8 text-white" />
-                  </div>
-                </div>
-                
-                <h3 className="text-3xl md:text-4xl font-bold text-white font-lexend">{step.title}</h3>
-                <p className="text-xl text-gray-300 leading-relaxed font-lexend">{step.description}</p>
-                
-                <ul className="space-y-3">
-                  {step.details.map((detail, detailIndex) => (
-                    <li key={detailIndex} className="flex items-center gap-3 text-gray-400 font-lexend">
-                      <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${step.color}`} />
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Visual */}
               <motion.div
-                whileHover={{ scale: 1.05, rotateY: 5 }}
-                className="flex-1 relative"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-500/20"
               >
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 aspect-square flex items-center justify-center">
-                  <div className={`w-32 h-32 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center`}>
-                    <step.icon className="w-16 h-16 text-white" />
-                  </div>
-                  
-                  {/* Animated rings */}
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className={`absolute inset-8 border-2 border-current rounded-full bg-gradient-to-r ${step.color} bg-clip-text text-transparent`}
-                  />
-                  <motion.div
-                    animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0, 0.3] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                    className={`absolute inset-4 border border-current rounded-full bg-gradient-to-r ${step.color} bg-clip-text text-transparent`}
-                  />
-                </div>
+                <step.icon className="w-6 h-6 text-blue-300" />
               </motion.div>
+              <div className="text-3xl font-extrabold text-blue-300 font-lexend">
+                {step.number}
+              </div>
+              <h3 className="text-lg font-semibold text-white font-lexend">
+                {step.title}
+              </h3>
+              <p className="text-gray-400 text-sm font-lexend">
+                {step.description}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -315,7 +279,7 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border border-white/10 p-8 md:p-12 text-center"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600/20 to-indigo-600/20 border border-white/10 p-8 md:p-12 text-center"
         >
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-lexend">
             See It in Action
@@ -335,7 +299,7 @@ export default function HowItWorks() {
           
           {/* Background decoration */}
           <div className="absolute top-4 right-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-4 left-4 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-4 left-4 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
         </motion.div>
       </div>
     </section>
