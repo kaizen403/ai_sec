@@ -82,7 +82,7 @@ const CallAnimation = () => {
         <h3 className="text-2xl font-bold text-white mb-6 text-center font-lexend">
           Watch Your AI Secretary in Action
         </h3>
-        
+
         {/* Phone Animation */}
         <div className="relative">
           {/* Incoming Call */}
@@ -113,18 +113,18 @@ const CallAnimation = () => {
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 mb-6 p-4 bg-purple-500/20 rounded-2xl border border-purple-500/30"
+            className="flex items-center gap-4 mb-6 p-4 bg-yellow-500/20 rounded-2xl border border-yellow-500/30"
           >
-            <Brain className="w-8 h-8 text-purple-400" />
+            <Brain className="w-8 h-8 text-yellow-400" />
             <div className="flex-1">
               <p className="text-white font-semibold font-lexend">AI Processing</p>
               <div className="flex items-center gap-2 mt-2">
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="w-4 h-4 border-2 border-purple-400 border-t-transparent rounded-full"
+                  transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                  className="w-4 h-4 border-2 border-yellow-400 border-t-transparent rounded-full"
                 />
-                <p className="text-purple-300 text-sm font-lexend">Checking calendar availability...</p>
+                <p className="text-yellow-300 text-sm font-lexend">Checking calendar availability...</p>
               </div>
             </div>
           </motion.div>
@@ -165,7 +165,7 @@ const CallAnimation = () => {
             whileInView={{ pathLength: 1 }}
             transition={{ duration: 2, delay: 0.5 }}
             viewport={{ once: true }}
-            className="absolute left-8 top-16 bottom-16 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 via-green-400 to-orange-400 opacity-50"
+            className="absolute left-8 top-16 bottom-16 w-0.5 bg-gradient-to-b from-blue-400 via-yellow-400 via-green-400 to-orange-400 opacity-50"
           />
         </div>
       </div>
@@ -190,7 +190,7 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-lexend font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200 mb-6">
+          <h2 className="text-5xl md:text-6xl font-lexend font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-6">
             How It Works
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-lexend">
@@ -210,11 +210,16 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
               className="flex flex-col items-center text-center space-y-4 bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-blue-500/40"
             >
-              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-500/20">
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-500/20"
+              >
                 <step.icon className="w-6 h-6 text-blue-300" />
-              </div>
+              </motion.div>
               <div className="text-3xl font-extrabold text-blue-300 font-lexend">
                 {step.number}
               </div>
@@ -239,7 +244,7 @@ export default function HowItWorks() {
           <h3 className="text-4xl font-lexend font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-12">
             Perfect for Any Industry
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {useCases.map((useCase, index) => (
               <motion.div
@@ -274,7 +279,7 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border border-white/10 p-8 md:p-12 text-center"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600/20 to-indigo-600/20 border border-white/10 p-8 md:p-12 text-center"
         >
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-lexend">
             See It in Action
@@ -282,7 +287,7 @@ export default function HowItWorks() {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-lexend">
             Watch a real conversation between a client and an AI Secretary. Notice how natural and efficient it feels.
           </p>
-          
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -291,10 +296,10 @@ export default function HowItWorks() {
             <PlayCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
             Watch 2-Minute Demo
           </motion.button>
-          
+
           {/* Background decoration */}
           <div className="absolute top-4 right-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-4 left-4 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-4 left-4 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
         </motion.div>
       </div>
     </section>
