@@ -3,13 +3,14 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Calendar, Phone, MessageSquare, Brain, Clock, CheckCircle, Zap, Shield } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const features = [
   {
     icon: Calendar,
     title: 'Intelligent Scheduling',
     subtitle: 'Call-In & Text-In Booking',
-    description: 'Visitors, clients, or colleagues dial or message your AI Secretary. It checks your calendar, suggests optimal time slots, and instantly confirms appointments—eliminating endless back-and-forth.',
+    description: 'Visitors, clients, or colleagues dial or message Rixie AI. It checks your calendar, suggests optimal time slots, and instantly confirms appointments—eliminating endless back-and-forth.',
     color: 'from-blue-500 to-cyan-500',
     delay: 0,
   },
@@ -17,7 +18,7 @@ const features = [
     icon: Phone,
     title: 'Proactive Outreach',
     subtitle: 'Outbound Meeting Requests',
-    description: 'Need to reschedule or confirm? Your Secretary reaches out by phone or text on your behalf with professional, human-like communication that maintains your reputation.',
+    description: 'Need to reschedule or confirm? Rixie AI reaches out by phone or text on your behalf with professional, human-like communication that maintains your reputation.',
     color: 'from-purple-500 to-pink-500',
     delay: 0.2,
   },
@@ -33,7 +34,7 @@ const features = [
     icon: Brain,
     title: 'Contextual Intelligence',
     subtitle: 'Memory-Driven Insights',
-    description: 'Your Secretary learns patterns, remembers preferences, and provides intelligent nudges—alerting you when it\'s time to follow up with key contacts or prepare for recurring topics.',
+    description: 'Rixie AI learns patterns, remembers preferences, and provides intelligent nudges—alerting you when it\'s time to follow up with key contacts or prepare for recurring topics.',
     color: 'from-orange-500 to-red-500',
     delay: 0.6,
   },
@@ -41,7 +42,7 @@ const features = [
     icon: MessageSquare,
     title: 'Seamless Documentation',
     subtitle: 'Capture Every Important Detail',
-    description: 'After calls or meetings, your Secretary prompts for notes and action items. Dictate decisions, preferences, or follow-ups—everything is timestamped and linked to the relevant event.',
+    description: 'After calls or meetings, Rixie AI prompts for notes and action items. Dictate decisions, preferences, or follow-ups—everything is timestamped and linked to the relevant event.',
     color: 'from-teal-500 to-blue-500',
     delay: 0.8,
   },
@@ -49,7 +50,7 @@ const features = [
     icon: CheckCircle,
     title: 'Action-Oriented Follow-up',
     subtitle: 'Turn Conversations into Results',
-    description: 'Transform meeting notes into actionable tasks automatically. Your Secretary creates follow-up reminders and can schedule necessary next steps directly on your calendar.',
+    description: 'Transform meeting notes into actionable tasks automatically. Rixie AI creates follow-up reminders and can schedule necessary next steps directly on your calendar.',
     color: 'from-indigo-500 to-purple-500',
     delay: 1.0,
   },
@@ -105,43 +106,57 @@ export default function Features() {
             Superhuman Capabilities
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-lexend">
-            Your AI Secretary doesn&apos;t just manage your schedule—it revolutionizes how you connect, remember, and execute on what matters most.
+            Rixie AI doesn&apos;t just manage your schedule—it revolutionizes how you connect, remember, and execute on what matters most.
           </p>
         </motion.div>
 
         {/* Main Features Grid */}
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50, rotateX: 10 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{ duration: 0.8, delay: feature.delay }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative"
-            >
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.color} mb-6`}
-                >
-                  <feature.icon className="w-8 h-8 text-white" />
-                </motion.div>
-                
-                <h3 className="text-2xl font-bold text-white mb-2 font-lexend">{feature.title}</h3>
-                <h4 className={`text-lg font-medium bg-gradient-to-r ${feature.color} bg-clip-text text-transparent mb-4 font-lexend`}>
-                  {feature.subtitle}
-                </h4>
-                <p className="text-gray-300 leading-relaxed font-lexend">{feature.description}</p>
+        <div
+          ref={ref}
+          className="grid auto-rows-[220px] grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+        >
+          {features.map((feature, index) => {
+            const layout = [
+              'lg:col-span-2 lg:row-span-2',
+              'lg:col-span-2',
+              '',
+              '',
+              'lg:col-span-2',
+              ''
+            ][index];
 
-                {/* Hover Effect */}
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-300`}
-                />
-              </div>
-            </motion.div>
-          ))}
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50, rotateX: 10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ duration: 0.8, delay: feature.delay }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className={cn('group relative', layout)}
+              >
+                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.color} mb-6`}
+                  >
+                    <feature.icon className="w-8 h-8 text-white" />
+                  </motion.div>
+
+                  <h3 className="text-2xl font-bold text-white mb-2 font-lexend">{feature.title}</h3>
+                  <h4 className={`text-lg font-medium bg-gradient-to-r ${feature.color} bg-clip-text text-transparent mb-4 font-lexend`}>
+                    {feature.subtitle}
+                  </h4>
+                  <p className="text-gray-300 leading-relaxed font-lexend flex-grow">{feature.description}</p>
+
+                  {/* Hover Effect */}
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-300`}
+                  />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Why We Stand Out */}
@@ -153,7 +168,7 @@ export default function Features() {
           className="text-center mb-16"
         >
           <h3 className="text-4xl font-lexend font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200 mb-12">
-            Why Our AI Secretary Stands Out
+            Why Rixie AI Stands Out
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -195,7 +210,7 @@ export default function Features() {
               Ready to Experience the Future?
             </h3>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-lexend">
-              See how your AI Secretary handles real conversations, scheduling conflicts, and complex requests with human-like intelligence.
+              See how Rixie AI handles real conversations, scheduling conflicts, and complex requests with human-like intelligence.
             </p>
             
             <motion.button
