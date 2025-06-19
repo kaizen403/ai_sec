@@ -82,7 +82,7 @@ const CallAnimation = () => {
         <h3 className="text-2xl font-bold text-white mb-6 text-center font-lexend">
           Watch Your AI Secretary in Action
         </h3>
-        
+
         {/* Phone Animation */}
         <div className="relative">
           {/* Incoming Call */}
@@ -121,7 +121,9 @@ const CallAnimation = () => {
               <div className="flex items-center gap-2 mt-2">
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+
+                  transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+
                   className="w-4 h-4 border-2 border-yellow-400 border-t-transparent rounded-full"
                 />
                 <p className="text-yellow-300 text-sm font-lexend">Checking calendar availability...</p>
@@ -244,7 +246,7 @@ export default function HowItWorks() {
           <h3 className="text-4xl font-lexend font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-12">
             Perfect for Any Industry
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {useCases.map((useCase, index) => (
               <motion.div
@@ -287,7 +289,7 @@ export default function HowItWorks() {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-lexend">
             Watch a real conversation between a client and an AI Secretary. Notice how natural and efficient it feels.
           </p>
-          
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -296,7 +298,7 @@ export default function HowItWorks() {
             <PlayCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
             Watch 2-Minute Demo
           </motion.button>
-          
+
           {/* Background decoration */}
           <div className="absolute top-4 right-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
           <div className="absolute bottom-4 left-4 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>

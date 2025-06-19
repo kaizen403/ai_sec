@@ -58,21 +58,25 @@ export default function Hero() {
             className="mb-8"
           >
             <motion.h1
-              className="text-3xl md:text-5xl lg:text-6xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-6 leading-tight tracking-tighter"
+
+              className="text-3xl md:text-5xl lg:text-6xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-6 leading-tight tracking-tight"
+
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               The AI That Makes You
             </motion.h1>
-            
+
             <motion.div
               initial={{ opacity: 0, rotateX: 90 }}
               animate={{ opacity: 1, rotateX: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="relative"
             >
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 mb-8 leading-tight tracking-tighter">
+
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 mb-8 leading-tight tracking-tight">
+
                 <span className="fire-underline">Fire</span> Your Secretary
               </h1>
             </motion.div>
