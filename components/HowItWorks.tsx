@@ -121,7 +121,9 @@ const CallAnimation = () => {
               <div className="flex items-center gap-2 mt-2">
                 <motion.div
                   animate={{ rotate: 360 }}
+
                   transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+
                   className="w-4 h-4 border-2 border-yellow-400 border-t-transparent rounded-full"
                 />
                 <p className="text-yellow-300 text-sm font-lexend">Checking calendar availability...</p>

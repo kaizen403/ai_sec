@@ -58,7 +58,9 @@ export default function Hero() {
             className="mb-8"
           >
             <motion.h1
+
               className="text-3xl md:text-5xl lg:text-6xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-6 leading-tight tracking-tight"
+
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -72,7 +74,9 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="relative"
             >
+
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 mb-8 leading-tight tracking-tight">
+
                 <span className="fire-underline">Fire</span> Your Secretary
               </h1>
             </motion.div>
@@ -139,14 +143,25 @@ export default function Hero() {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 1.4 + index * 0.1 }}
-                className="group"
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative group"
               >
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition-colors">
-                  <Icon className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-                  <div className="text-3xl font-bold text-white mb-2 font-lexend">{number}</div>
-                  <div className="text-gray-400 font-lexend">{label}</div>
+                <motion.div
+                  className="absolute inset-0 rounded-2xl bg-blue-500/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity"
+                  aria-hidden="true"
+                />
+                <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 flex flex-col items-center">
+                  <Icon className="w-8 h-8 text-blue-400 mb-3" />
+                  <motion.div
+                    initial={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="text-3xl font-extrabold text-white mb-1 font-lexend"
+                  >
+                    {number}
+                  </motion.div>
+                  <div className="text-gray-400 font-lexend text-sm">{label}</div>
                 </div>
               </motion.div>
             ))}
