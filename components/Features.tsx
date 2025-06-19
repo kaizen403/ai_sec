@@ -99,7 +99,7 @@ export default function Features() {
             Superhuman Capabilities
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-lexend">
-            Your AI Secretary doesn't just manage your schedule—it revolutionizes how you connect, remember, and follow through.
+            Your AI Secretary doesn&apos;t just manage your schedule—it revolutionizes how you connect, remember, and follow through.
           </p>
         </motion.div>
 
