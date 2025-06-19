@@ -40,9 +40,6 @@ export default function Navigation() {
               <a href="#features" className="text-gray-300 hover:text-white transition-colors font-lexend">
                 Features
               </a>
-              <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors font-lexend">
-                How It Works
-              </a>
               <a href="#pricing" className="text-gray-300 hover:text-white transition-colors font-lexend">
                 Pricing
               </a>
@@ -77,9 +74,6 @@ export default function Navigation() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="#features" className="block px-3 py-2 text-gray-300 hover:text-white font-lexend">
               Features
-            </a>
-            <a href="#how-it-works" className="block px-3 py-2 text-gray-300 hover:text-white font-lexend">
-              How It Works
             </a>
             <a href="#pricing" className="block px-3 py-2 text-gray-300 hover:text-white font-lexend">
               Pricing
