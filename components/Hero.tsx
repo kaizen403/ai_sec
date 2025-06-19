@@ -65,7 +65,7 @@ export default function Hero() {
             >
               The AI That Makes You
             </motion.h1>
-            
+
             <motion.div
               initial={{ opacity: 0, rotateX: 90 }}
               animate={{ opacity: 1, rotateX: 0 }}
