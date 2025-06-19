@@ -81,20 +81,29 @@ const faqs = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section
+      id="pricing"
+      className="py-24 bg-gradient-to-b from-[#060A17] to-[#0A0F1F] relative overflow-hidden"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-lexend font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-6">
             Choose Your Plan
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-lexend">
             Transparent solutions designed to scale with your business needs.
             All plans include comprehensive support and full feature access.
           </p>
@@ -112,25 +121,32 @@ export default function Pricing() {
               className={`relative ${plan.popular ? "lg:scale-105" : ""}`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-1 rounded-full text-sm font-medium">
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-1 rounded-full text-sm font-bold font-lexend"
+                >
                   Most Popular
-                </div>
+                </motion.div>
               )}
 
               <div
-                className={`bg-white rounded-2xl p-8 border-2 ${
-                  plan.popular ? "border-gray-900 shadow-lg" : "border-gray-200"
-                } h-full flex flex-col`}
+                className={`bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border ${
+                  plan.popular ? "border-purple-500/50" : "border-white/10"
+                } h-full flex flex-col hover:border-white/20 transition-all duration-300`}
               >
                 {/* Header */}
                 <div className="text-center mb-8">
-                  <div className="inline-flex p-3 rounded-xl bg-gray-50 mb-4">
-                    <plan.icon className="w-6 h-6 text-gray-700" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="inline-flex p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 mb-4"
+                  >
+                    <plan.icon className="w-6 h-6 text-white" />
+                  </motion.div>
+                  <h3 className="text-2xl font-semibold text-white mb-2 font-lexend">
                     {plan.name}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-gray-400 text-sm leading-relaxed font-lexend">
                     {plan.description}
                   </p>
                 </div>
@@ -139,8 +155,8 @@ export default function Pricing() {
                 <ul className="space-y-4 mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">
+                      <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-300 text-sm leading-relaxed font-lexend">
                         {feature}
                       </span>
                     </li>
@@ -148,15 +164,17 @@ export default function Pricing() {
                 </ul>
 
                 {/* CTA Button */}
-                <button
-                  className={`w-full py-3 px-6 rounded-xl font-medium transition-all duration-200 ${
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`w-full py-3 px-6 rounded-xl font-bold transition-all duration-300 font-lexend ${
                     plan.popular
-                      ? "bg-gray-900 text-white"
-                      : "bg-gray-50 text-gray-900 border border-gray-200"
+                      ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                      : "bg-white/10 text-white hover:bg-white/20"
                   }`}
                 >
                   Contact Us
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           ))}
@@ -170,7 +188,7 @@ export default function Pricing() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <h3 className="text-3xl font-light text-gray-900 text-center mb-12 tracking-tight">
+          <h3 className="text-3xl font-lexend font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200 mb-12">
             Frequently Asked Questions
           </h3>
 
@@ -182,12 +200,13 @@ export default function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-50 rounded-xl p-6"
+                whileHover={{ y: -5 }}
+                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 transition-all duration-300"
               >
-                <h4 className="text-lg font-medium text-gray-900 mb-3 leading-snug">
+                <h4 className="text-lg font-bold text-white mb-3 font-lexend">
                   {faq.question}
                 </h4>
-                <p className="text-gray-600 leading-relaxed text-sm">
+                <p className="text-gray-400 leading-relaxed font-lexend">
                   {faq.answer}
                 </p>
               </motion.div>
@@ -201,29 +220,48 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center bg-gray-50 rounded-2xl p-12"
+          className="text-center bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/10 rounded-3xl p-12 relative overflow-hidden"
         >
-          <h3 className="text-3xl font-light text-gray-900 mb-4 tracking-tight">
+          <h3 className="text-3xl font-bold text-white mb-4 font-lexend">
             Ready to Get Started?
           </h3>
-          <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto leading-relaxed font-lexend">
             Lets discuss how our AI Secretary can transform your business
             operations and boost your productivity.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gray-900 text-white px-8 py-3 rounded-xl font-medium inline-flex items-center gap-2 transition-all duration-200">
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(147, 51, 234, 0.5)' }}
+              whileTap={{ scale: 0.95 }}
+              className="group bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-bold inline-flex items-center gap-2 shadow-2xl font-lexend"
+            >
               Contact Our Team
-              <ArrowRight className="w-4 h-4" />
-            </button>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
 
-            <button className="px-8 py-3 bg-transparent border border-gray-300 text-gray-700 font-medium rounded-xl transition-all duration-200">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-transparent border border-white/20 text-white font-bold rounded-full transition-colors font-lexend hover:bg-white/10"
+            >
               Schedule Demo
-            </button>
+            </motion.button>
           </div>
+
+          {/* Background decoration */}
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            className="absolute top-4 left-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"
+          />
+          <motion.div
+            animate={{ rotate: [360, 0] }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+            className="absolute bottom-4 right-4 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl"
+          />
         </motion.div>
       </div>
     </section>
   );
 }
-
