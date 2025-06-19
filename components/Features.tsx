@@ -7,49 +7,49 @@ import { Calendar, Phone, MessageSquare, Brain, Clock, CheckCircle, Zap, Shield 
 const features = [
   {
     icon: Calendar,
-    title: 'Schedule in Seconds',
+    title: 'Intelligent Scheduling',
     subtitle: 'Call-In & Text-In Booking',
-    description: 'Visitors, clients, or colleagues dial or message your AI Secretary\'s number. It checks your calendar, suggests up to three open slots, and instantly confirms an appointment—no more endless back-and-forth.',
+    description: 'Visitors, clients, or colleagues dial or message your AI Secretary. It checks your calendar, suggests optimal time slots, and instantly confirms appointments—eliminating endless back-and-forth.',
     color: 'from-blue-500 to-cyan-500',
     delay: 0,
   },
   {
     icon: Phone,
-    title: 'Let Us Make the Call',
+    title: 'Proactive Outreach',
     subtitle: 'Outbound Meeting Requests',
-    description: 'Need to reschedule or confirm? Your Secretary reaches out by phone or text on your behalf: "Hi, this is Jordan\'s Secretary—are you available next Tuesday at 2 PM?"',
+    description: 'Need to reschedule or confirm? Your Secretary reaches out by phone or text on your behalf with professional, human-like communication that maintains your reputation.',
     color: 'from-purple-500 to-pink-500',
     delay: 0.2,
   },
   {
     icon: Clock,
-    title: 'Never Forget a Moment',
-    subtitle: 'Proactive Reminders',
-    description: 'Receive texts or automated calls ahead of every event ("You have \'Project Kickoff\' in one hour—agenda: finalize scope").',
+    title: 'Smart Reminders',
+    subtitle: 'Never Miss Important Moments',
+    description: 'Receive intelligent texts or calls ahead of every event with context-aware information, agenda details, and preparation notes tailored to each meeting.',
     color: 'from-green-500 to-emerald-500',
     delay: 0.4,
   },
   {
     icon: Brain,
-    title: 'Memory-Driven Nudges',
-    subtitle: 'Intelligent Contextual Alerts',
-    description: 'Beyond standard reminders, your Secretary learns patterns and personal notes—alerting you when it\'s time to check in with a key contact or prepare for a recurring topic.',
+    title: 'Contextual Intelligence',
+    subtitle: 'Memory-Driven Insights',
+    description: 'Your Secretary learns patterns, remembers preferences, and provides intelligent nudges—alerting you when it\'s time to follow up with key contacts or prepare for recurring topics.',
     color: 'from-orange-500 to-red-500',
     delay: 0.6,
   },
   {
     icon: MessageSquare,
-    title: 'Capture Every Detail',
-    subtitle: 'On-Demand Note Capture',
-    description: 'After any call or meeting, your Secretary prompts, "Anything to note?" Dictate decisions, preferences, or action items—it timestamps and links them to that event.',
+    title: 'Seamless Documentation',
+    subtitle: 'Capture Every Important Detail',
+    description: 'After calls or meetings, your Secretary prompts for notes and action items. Dictate decisions, preferences, or follow-ups—everything is timestamped and linked to the relevant event.',
     color: 'from-teal-500 to-blue-500',
     delay: 0.8,
   },
   {
     icon: CheckCircle,
-    title: 'Turn Notes into Next Steps',
-    subtitle: 'Instant Task Creation',
-    description: 'Post-meeting, text "Log action items" and list your tasks. Your Secretary stores them and can add follow-up reminders on your calendar.',
+    title: 'Action-Oriented Follow-up',
+    subtitle: 'Turn Conversations into Results',
+    description: 'Transform meeting notes into actionable tasks automatically. Your Secretary creates follow-up reminders and can schedule necessary next steps directly on your calendar.',
     color: 'from-indigo-500 to-purple-500',
     delay: 1.0,
   },
@@ -59,22 +59,22 @@ const benefits = [
   {
     icon: Calendar,
     title: 'Calendar-First Design',
-    description: 'No inbox access required—just your existing calendar and a secure notes space.',
+    description: 'Seamless integration with your existing workflow—no inbox access required, just intelligent calendar management.',
   },
   {
     icon: Zap,
-    title: 'Hands-Free Efficiency',
-    description: 'Handle scheduling, reminders, and follow-ups entirely via voice or text.',
+    title: 'Voice & Text Mastery',
+    description: 'Handle all communication entirely via voice or text with natural language processing that understands context.',
   },
   {
     icon: Brain,
-    title: 'Human-Like Memory',
-    description: 'Personal preferences, project details, and meeting history—all at your fingertips.',
+    title: 'Adaptive Learning',
+    description: 'Continuously learns your preferences, communication style, and business patterns for increasingly personalized service.',
   },
   {
     icon: Shield,
     title: 'Enterprise Security',
-    description: 'Bank-level encryption and privacy protection for all your sensitive information.',
+    description: 'Bank-level encryption, GDPR compliance, and zero-trust architecture protect all your sensitive information.',
   },
 ];
 
@@ -85,8 +85,14 @@ export default function Features() {
   });
 
   return (
-    <section id="features" className="py-20 bg-gradient-to-b from-[#060A17] to-[#0A0F1F]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-20 bg-gradient-to-b from-[#060A17] to-[#0A0F1F] relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -99,7 +105,7 @@ export default function Features() {
             Superhuman Capabilities
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-lexend">
-            Your AI Secretary doesn&apos;t just manage your schedule—it revolutionizes how you connect, remember, and follow through.
+            Your AI Secretary doesn&apos;t just manage your schedule—it revolutionizes how you connect, remember, and execute on what matters most.
           </p>
         </motion.div>
 
@@ -115,10 +121,13 @@ export default function Features() {
               whileHover={{ y: -10, scale: 1.02 }}
               className="group relative"
             >
-              <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
-                <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.color} mb-6`}>
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.color} mb-6`}
+                >
                   <feature.icon className="w-8 h-8 text-white" />
-                </div>
+                </motion.div>
                 
                 <h3 className="text-2xl font-bold text-white mb-2 font-lexend">{feature.title}</h3>
                 <h4 className={`text-lg font-medium bg-gradient-to-r ${feature.color} bg-clip-text text-transparent mb-4 font-lexend`}>
@@ -155,11 +164,16 @@ export default function Features() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -5 }}
                 className="group"
               >
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition-all duration-300 h-full">
-                  <benefit.icon className="w-10 h-10 text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 transition-all duration-300 h-full">
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <benefit.icon className="w-10 h-10 text-blue-400 mx-auto mb-4" />
+                  </motion.div>
                   <h4 className="text-lg font-bold text-white mb-3 font-lexend">{benefit.title}</h4>
                   <p className="text-gray-400 text-sm leading-relaxed font-lexend">{benefit.description}</p>
                 </div>
@@ -174,7 +188,7 @@ export default function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/10 p-8 md:p-12 text-center"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/10 p-12 text-center"
         >
           <div className="relative z-10">
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-lexend">
@@ -194,10 +208,16 @@ export default function Features() {
           </div>
           
           {/* Background Animation */}
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-4 left-4 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
-            <div className="absolute bottom-4 right-4 w-40 h-40 bg-purple-500/20 rounded-full blur-xl animate-pulse delay-1000"></div>
-          </div>
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute top-4 left-4 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"
+          />
+          <motion.div
+            animate={{ rotate: [360, 0] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-4 right-4 w-40 h-40 bg-purple-500/10 rounded-full blur-xl"
+          />
         </motion.div>
       </div>
     </section>

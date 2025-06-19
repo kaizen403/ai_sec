@@ -86,8 +86,14 @@ const faqs = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-20 bg-gradient-to-b from-[#060A17] to-[#0A0F1F]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="py-20 bg-gradient-to-b from-[#060A17] to-[#0A0F1F] relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -122,9 +128,13 @@ export default function Pricing() {
               className={`relative group ${plan.popular ? 'lg:scale-105' : ''}`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full font-bold text-sm font-lexend">
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full font-bold text-sm font-lexend"
+                >
                   Most Popular
-                </div>
+                </motion.div>
               )}
               
               <div className={`relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border ${
@@ -133,9 +143,12 @@ export default function Pricing() {
                 
                 {/* Header */}
                 <div className="text-center mb-8">
-                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${plan.color} mb-4`}>
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${plan.color} mb-4`}
+                  >
                     <plan.icon className="w-8 h-8 text-white" />
-                  </div>
+                  </motion.div>
                   <h3 className="text-2xl font-bold text-white mb-2 font-lexend">{plan.name}</h3>
                   <p className="text-gray-400 mb-4 font-lexend">{plan.description}</p>
                   <div className="flex items-baseline justify-center gap-1">
@@ -147,10 +160,17 @@ export default function Pricing() {
                 {/* Features */}
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className={`w-5 h-5 mt-0.5 bg-gradient-to-r ${plan.color} bg-clip-text text-transparent flex-shrink-0`} />
+                    <motion.li
+                      key={featureIndex}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 + featureIndex * 0.05 }}
+                      viewport={{ once: true }}
+                      className="flex items-start gap-3"
+                    >
+                      <Check className="w-5 h-5 mt-0.5 text-green-400 flex-shrink-0" />
                       <span className="text-gray-300 font-lexend">{feature}</span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
 
@@ -195,7 +215,8 @@ export default function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 transition-colors"
+                whileHover={{ y: -5 }}
+                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 transition-all duration-300"
               >
                 <h4 className="text-lg font-bold text-white mb-3 font-lexend">{faq.question}</h4>
                 <p className="text-gray-400 leading-relaxed font-lexend">{faq.answer}</p>
@@ -212,35 +233,45 @@ export default function Pricing() {
           viewport={{ once: true }}
           className="mt-20 text-center relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/10 p-12"
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-lexend">
-            Ready to Transform Your Productivity?
-          </h3>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-lexend">
-            Join thousands of professionals who have already fired their human secretary. Start your free trial today.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(147, 51, 234, 0.5)" }}
-              whileTap={{ scale: 0.95 }}
-              className="group bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-2xl font-lexend"
-            >
-              Start 14-Day Free Trial
-              <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+          <div className="relative z-10">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-lexend">
+              Ready to Transform Your Productivity?
+            </h3>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-lexend">
+              Join thousands of professionals who have already fired their human secretary. Start your free trial today.
+            </p>
             
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-transparent border-2 border-white/20 text-white font-bold rounded-full text-lg hover:bg-white/10 transition-colors font-lexend"
-            >
-              Schedule Demo
-            </motion.button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(147, 51, 234, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+                className="group bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-2xl font-lexend"
+              >
+                Start 14-Day Free Trial
+                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-transparent border-2 border-white/20 text-white font-bold rounded-full text-lg hover:bg-white/10 transition-colors font-lexend"
+              >
+                Schedule Demo
+              </motion.button>
+            </div>
           </div>
 
           {/* Background decoration */}
-          <div className="absolute top-4 left-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl animate-pulse"></div>
-          <div className="absolute bottom-4 right-4 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute top-4 left-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"
+          />
+          <motion.div
+            animate={{ rotate: [360, 0] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-4 right-4 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl"
+          />
         </motion.div>
       </div>
     </section>

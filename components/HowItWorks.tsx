@@ -2,176 +2,141 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Phone, MessageSquare, Calendar, Brain, ArrowRight, PlayCircle, User, Clock, CheckCircle } from 'lucide-react';
+import { Phone, Calendar, Brain, MessageSquare, ArrowRight, PlayCircle, Zap, Shield, Clock, CheckCircle } from 'lucide-react';
 
 const steps = [
   {
     number: '01',
     icon: Phone,
     title: 'Connect Your Phone',
-    description:
-      'Grab your dedicated AI Secretary number and share it with your contacts.',
+    description: 'Get your dedicated AI Secretary number and share it with your contacts. Your AI is instantly ready to handle calls and texts.',
+    details: [
+      'Instant setup in under 2 minutes',
+      'Professional greeting customization',
+      'Smart call routing and screening'
+    ]
   },
   {
     number: '02',
     icon: Calendar,
     title: 'Sync Your Calendar',
-    description:
-      'Link Google or Outlook so your availability is always up to date.',
+    description: 'Link Google Calendar, Outlook, or any major calendar service. Your AI knows your availability in real-time.',
+    details: [
+      'Two-way calendar synchronization',
+      'Multi-calendar support',
+      'Time zone intelligence'
+    ]
   },
   {
     number: '03',
     icon: Brain,
-    title: 'Train Preferences',
-    description:
-      'Teach your AI Secretary how and when you like to meet or respond.',
+    title: 'Train Your Preferences',
+    description: 'Teach your AI Secretary your meeting preferences, communication style, and business rules.',
+    details: [
+      'Natural language training',
+      'Custom business logic',
+      'Personality customization'
+    ]
   },
   {
     number: '04',
     icon: MessageSquare,
     title: 'Start Delegating',
-    description:
-      'Let your AI handle calls, texts and reminders while you focus.',
+    description: 'Your AI handles scheduling, reminders, and follow-ups while you focus on what matters most.',
+    details: [
+      'Automated follow-ups',
+      'Smart reminder system',
+      'Detailed conversation logs'
+    ]
   },
 ];
 
 const useCases = [
   {
-    title: 'For Executives',
-    scenarios: [
-      'Schedule board meetings across multiple time zones',
-      'Manage client calls and follow-up reminders',
-      'Coordinate with executive assistants seamlessly',
-    ],
-    icon: '👔',
+    title: 'Executive Leadership',
+    description: 'Board meetings, investor calls, and strategic planning sessions managed seamlessly.',
+    icon: Shield,
+    color: 'from-blue-500 to-cyan-500',
   },
   {
-    title: 'For Consultants',
-    scenarios: [
-      'Book discovery calls with prospects',
-      'Manage project check-ins and deliverables',
-      'Handle client communication professionally',
-    ],
-    icon: '💼',
+    title: 'Sales & Consulting',
+    description: 'Prospect calls, client meetings, and proposal follow-ups handled professionally.',
+    icon: Zap,
+    color: 'from-purple-500 to-pink-500',
   },
   {
-    title: 'For Healthcare',
-    scenarios: [
-      'Schedule patient appointments and confirmations',
-      'Manage referral coordination',
-      'Handle prescription refill reminders',
-    ],
-    icon: '🏥',
+    title: 'Healthcare & Legal',
+    description: 'Patient appointments, consultations, and compliance-ready communication.',
+    icon: Clock,
+    color: 'from-green-500 to-emerald-500',
   },
   {
-    title: 'For Sales Teams',
-    scenarios: [
-      'Qualify leads and book demos',
-      'Follow up on proposals automatically',
-      'Coordinate team meetings and training',
-    ],
-    icon: '📈',
+    title: 'Creative & Freelance',
+    description: 'Client consultations, project kickoffs, and creative briefings scheduled effortlessly.',
+    icon: CheckCircle,
+    color: 'from-orange-500 to-red-500',
   },
 ];
 
-// Interactive Animation Component
-const CallAnimation = () => {
+// Interactive Step Animation Component
+const StepAnimation = ({ step, index, isActive }: { step: any, index: number, isActive: boolean }) => {
   return (
-    <div className="relative w-full max-w-2xl mx-auto mb-20">
-      <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
-        <h3 className="text-2xl font-bold text-white mb-6 text-center font-lexend">
-          Watch Your AI Secretary in Action
-        </h3>
+    <motion.div
+      initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: index * 0.2 }}
+      viewport={{ once: true }}
+      className={`relative ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}
+    >
+      <div className="group relative">
+        {/* Step Number */}
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          className="absolute -left-6 lg:-left-8 top-8 z-10"
+        >
+          <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
+            <span className="text-white font-bold text-xl lg:text-2xl font-lexend">{step.number}</span>
+          </div>
+        </motion.div>
 
-        {/* Phone Animation */}
-        <div className="relative">
-          {/* Incoming Call */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-4 mb-6 p-4 bg-blue-500/20 rounded-2xl border border-blue-500/30"
-          >
-            <div className="relative">
-              <Phone className="w-8 h-8 text-blue-400" />
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-                className="absolute -inset-2 border-2 border-blue-400/50 rounded-full"
-              />
-            </div>
-            <div>
-              <p className="text-white font-semibold font-lexend">Incoming Call</p>
-              <p className="text-blue-300 text-sm font-lexend">Client wants to schedule a meeting</p>
-            </div>
-          </motion.div>
-
-          {/* AI Processing */}
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-4 mb-6 p-4 bg-yellow-500/20 rounded-2xl border border-yellow-500/30"
-          >
-            <Brain className="w-8 h-8 text-yellow-400" />
+        {/* Content Card */}
+        <motion.div
+          whileHover={{ y: -10, scale: 1.02 }}
+          className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/10 hover:border-blue-500/30 transition-all duration-300 ml-6 lg:ml-8"
+        >
+          <div className="flex items-start gap-6">
+            <motion.div
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.5 }}
+              className="p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl"
+            >
+              <step.icon className="w-8 h-8 text-blue-400" />
+            </motion.div>
+            
             <div className="flex-1">
-              <p className="text-white font-semibold font-lexend">AI Processing</p>
-              <div className="flex items-center gap-2 mt-2">
-                <motion.div
-                  animate={{ rotate: 360 }}
-
-                  transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-
-                  className="w-4 h-4 border-2 border-yellow-400 border-t-transparent rounded-full"
-                />
-                <p className="text-yellow-300 text-sm font-lexend">Checking calendar availability...</p>
-              </div>
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 font-lexend">{step.title}</h3>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6 font-lexend">{step.description}</p>
+              
+              <ul className="space-y-3">
+                {step.details.map((detail: string, detailIndex: number) => (
+                  <motion.li
+                    key={detailIndex}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.2 + detailIndex * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-3 text-blue-300 font-lexend"
+                  >
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    {detail}
+                  </motion.li>
+                ))}
+              </ul>
             </div>
-          </motion.div>
-
-          {/* Calendar Check */}
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-4 mb-6 p-4 bg-green-500/20 rounded-2xl border border-green-500/30"
-          >
-            <Calendar className="w-8 h-8 text-green-400" />
-            <div>
-              <p className="text-white font-semibold font-lexend">Calendar Synced</p>
-              <p className="text-green-300 text-sm font-lexend">Found 3 available slots this week</p>
-            </div>
-          </motion.div>
-
-          {/* Response */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.1 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-4 p-4 bg-orange-500/20 rounded-2xl border border-orange-500/30"
-          >
-            <CheckCircle className="w-8 h-8 text-orange-400" />
-            <div>
-              <p className="text-white font-semibold font-lexend">Meeting Scheduled</p>
-              <p className="text-orange-300 text-sm font-lexend">Confirmation sent to both parties</p>
-            </div>
-          </motion.div>
-
-          {/* Connecting Lines */}
-          <motion.div
-            initial={{ pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
-            transition={{ duration: 2, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="absolute left-8 top-16 bottom-16 w-0.5 bg-gradient-to-b from-blue-400 via-yellow-400 via-green-400 to-orange-400 opacity-50"
-          />
-        </div>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -182,8 +147,14 @@ export default function HowItWorks() {
   });
 
   return (
-    <section id="how-it-works" className="py-20 bg-gradient-to-b from-[#0A0F1F] to-[#060A17]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="py-20 bg-gradient-to-b from-[#0A0F1F] to-[#060A17] relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -196,43 +167,24 @@ export default function HowItWorks() {
             How It Works
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-lexend">
-            Get your AI Secretary up and running in minutes, not hours. No complex setup, no training required.
+            Get your AI Secretary up and running in minutes. No complex setup, no training required—just intelligent automation that works.
           </p>
         </motion.div>
 
-        {/* Interactive Animation */}
-        <CallAnimation />
-
-        {/* Steps */}
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center text-center space-y-4 bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-blue-500/40"
-            >
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-500/20"
-              >
-                <step.icon className="w-6 h-6 text-blue-300" />
-              </motion.div>
-              <div className="text-3xl font-extrabold text-blue-300 font-lexend">
-                {step.number}
+        {/* Steps with Timeline */}
+        <div ref={ref} className="relative mb-20">
+          {/* Timeline Line */}
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 transform -translate-x-1/2 opacity-30"></div>
+          
+          <div className="space-y-16 lg:space-y-24">
+            {steps.map((step, index) => (
+              <div key={index} className={`lg:grid lg:grid-cols-2 lg:gap-16 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+                  <StepAnimation step={step} index={index} isActive={inView} />
+                </div>
               </div>
-              <h3 className="text-lg font-semibold text-white font-lexend">
-                {step.title}
-              </h3>
-              <p className="text-gray-400 text-sm font-lexend">
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Use Cases */}
@@ -243,8 +195,8 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h3 className="text-4xl font-lexend font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-12">
-            Perfect for Any Industry
+          <h3 className="text-4xl font-lexend font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200 mb-12">
+            Perfect for Every Professional
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -255,20 +207,19 @@ export default function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="group"
+                whileHover={{ y: -10, scale: 1.05 }}
+                className="group relative"
               >
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition-all duration-300 h-full">
-                  <div className="text-4xl mb-4">{useCase.icon}</div>
+                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${useCase.color} mb-6`}
+                  >
+                    <useCase.icon className="w-8 h-8 text-white" />
+                  </motion.div>
+                  
                   <h4 className="text-xl font-bold text-white mb-4 font-lexend">{useCase.title}</h4>
-                  <ul className="space-y-2">
-                    {useCase.scenarios.map((scenario, scenarioIndex) => (
-                      <li key={scenarioIndex} className="text-gray-400 text-sm flex items-start gap-2 font-lexend">
-                        <ArrowRight className="w-3 h-3 text-blue-400 mt-1 flex-shrink-0" />
-                        {scenario}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-gray-400 leading-relaxed font-lexend">{useCase.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -281,27 +232,37 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600/20 to-indigo-600/20 border border-white/10 p-8 md:p-12 text-center"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/10 p-12 text-center"
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-lexend">
-            See It in Action
-          </h3>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-lexend">
-            Watch a real conversation between a client and an AI Secretary. Notice how natural and efficient it feels.
-          </p>
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute top-4 right-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"
+          />
+          <motion.div
+            animate={{ rotate: [360, 0] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-4 left-4 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl"
+          />
+          
+          <div className="relative z-10">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-lexend">
+              See It in Action
+            </h3>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-lexend">
+              Watch a real conversation between a client and an AI Secretary. Notice how natural, intelligent, and efficient it feels.
+            </p>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold text-lg border border-white/20 hover:bg-white/20 transition-all font-lexend"
-          >
-            <PlayCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
-            Watch 2-Minute Demo
-          </motion.button>
-
-          {/* Background decoration */}
-          <div className="absolute top-4 right-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-4 left-4 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(147, 51, 234, 0.5)" }}
+              whileTap={{ scale: 0.95 }}
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-2xl font-lexend"
+            >
+              <PlayCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              Watch 2-Minute Demo
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </div>
         </motion.div>
       </div>
     </section>
