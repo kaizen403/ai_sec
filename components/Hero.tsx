@@ -1,147 +1,249 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Bot, ArrowDown } from 'lucide-react';
+import { Bot, Zap, ArrowRight, Cpu, Shield, Sparkles } from 'lucide-react';
 import { openCalendly } from '@/lib/utils';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-[#0B0E15] via-[#0F141A] to-[#161C22] overflow-hidden flex items-center">
-      {/* Animated Background Elements */}
+    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 overflow-hidden flex items-center">
+      {/* Cyberpunk Grid Background */}
+      <div className="absolute inset-0 cyber-grid opacity-20"></div>
+      
+      {/* Matrix Rain Effect */}
       <div className="absolute inset-0">
-        <motion.div
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ y: [0, 30, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"
-        />
-        
-        {/* Floating Particles */}
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 50 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+            className="absolute w-px bg-gradient-to-b from-transparent via-green-400 to-transparent"
             style={{
               left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              height: `${Math.random() * 100 + 100}px`,
             }}
             animate={{
-              y: [0, -30, 0],
-              opacity: [0.3, 1, 0.3],
+              y: ['-100vh', '100vh'],
+              opacity: [0, 1, 0],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: Math.random() * 3 + 2,
               repeat: Infinity,
               delay: Math.random() * 2,
+              ease: 'linear',
             }}
           />
         ))}
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center">
-          {/* Main Heading */}
+      {/* Floating Geometric Shapes */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 8 }).map((_, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8"
+            key={i}
+            className="absolute"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              rotate: 360,
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 10,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
           >
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white mb-6 leading-tight tracking-tight"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+            <div className="w-16 h-16 border border-cyan-400/30 rotate-45 bg-gradient-to-r from-purple-500/10 to-cyan-500/10"></div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            {/* Glitch Effect Title */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              The AI That Makes You
-            </motion.h1>
+              <div className="relative">
+                <h1 
+                  className="text-6xl md:text-7xl font-black leading-tight"
+                  data-text="RIXIE AI"
+                >
+                  <span className="holographic font-lexend">RIXIE AI</span>
+                </h1>
+                <motion.div
+                  animate={{ opacity: [0, 1, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute -top-2 -left-2 text-6xl md:text-7xl font-black text-red-500/30 font-lexend"
+                >
+                  RIXIE AI
+                </motion.div>
+              </div>
+            </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, rotateX: 90 }}
-              animate={{ opacity: 1, rotateX: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-lexend font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 mb-8 leading-tight tracking-tight">
-                <span className="fire-underline">Fire</span> Your Secretary
-              </h1>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-lexend">
+                The AI That Makes You
+              </h2>
+              <div className="relative inline-block">
+                <span className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent neon-text font-lexend">
+                  FIRE YOUR SECRETARY
+                </span>
+                <motion.div
+                  animate={{ scaleX: [0, 1, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-yellow-500"
+                />
+              </div>
             </motion.div>
-          </motion.div>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-lexend"
-          >
-            Forge genuine connections—calls, texts, reminders, and answers that feel human.
-            <span className="block mt-4 text-blue-400 font-medium text-lg">
-              dont wait. shes not worth it. replace your secretary with rixie ai now!
-            </span>
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' }}
-              whileTap={{ scale: 0.95 }}
-              onClick={openCalendly}
-              className="group relative px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-700 text-white font-bold rounded-full text-xl shadow-2xl overflow-hidden font-lexend"
+            <motion.p
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl text-gray-300 leading-relaxed font-lexend"
             >
-              <span className="relative z-10 flex items-center gap-3">
-                <Bot className="w-6 h-6" />
-                Book a Demo
+              Forge genuine connections with calls, texts, reminders, and answers that feel human.
+              <span className="block mt-2 text-cyan-400 font-medium">
+                Don't wait. She's not worth it. Replace your secretary with Rixie AI now!
               </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600"
-                initial={{ scale: 0, rotate: 180 }}
-                whileHover={{ scale: 1, rotate: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.button>
+            </motion.p>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-transparent border-2 border-white/30 text-white font-bold rounded-full text-xl hover:bg-white/10 hover:border-white/50 transition-all font-lexend"
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4"
             >
-              Watch Demo
-            </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={openCalendly}
+                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg text-lg overflow-hidden neon-border font-lexend"
+              >
+                <span className="relative z-10 flex items-center gap-3">
+                  <Bot className="w-6 h-6" />
+                  Book Demo Now
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600"
+                  initial={{ scale: 0, rotate: 180 }}
+                  whileHover={{ scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 font-bold rounded-lg text-lg hover:bg-cyan-400/10 transition-all font-lexend"
+              >
+                Watch Demo
+              </motion.button>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="grid grid-cols-3 gap-6 pt-8"
+            >
+              {[
+                { icon: Zap, value: '99.9%', label: 'Uptime' },
+                { icon: Shield, value: '24/7', label: 'Available' },
+                { icon: Sparkles, value: '< 1s', label: 'Response' },
+              ].map((stat, index) => (
+                <div key={index} className="text-center">
+                  <stat.icon className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
+                  <div className="text-2xl font-bold text-white font-lexend">{stat.value}</div>
+                  <div className="text-sm text-gray-400 font-lexend">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right Visual */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative"
+          >
+            <div className="relative w-full h-96 flex items-center justify-center">
+              {/* Central AI Core */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                className="relative w-48 h-48 rounded-full border-4 border-cyan-400/50 flex items-center justify-center"
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-32 h-32 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 flex items-center justify-center"
+                >
+                  <Cpu className="w-16 h-16 text-white" />
+                </motion.div>
+              </motion.div>
+
+              {/* Orbiting Elements */}
+              {Array.from({ length: 6 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-4 h-4 bg-cyan-400 rounded-full"
+                  animate={{
+                    rotate: 360,
+                  }}
+                  transition={{
+                    duration: 5 + i,
+                    repeat: Infinity,
+                    ease: 'linear',
+                  }}
+                  style={{
+                    transformOrigin: `${120 + i * 20}px center`,
+                  }}
+                />
+              ))}
+
+              {/* Pulsing Rings */}
+              {Array.from({ length: 3 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full border border-purple-500/30"
+                  style={{
+                    width: `${200 + i * 60}px`,
+                    height: `${200 + i * 60}px`,
+                  }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 3 + i,
+                    repeat: Infinity,
+                    delay: i * 0.5,
+                  }}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-white/60"
-        >
-          <span className="text-sm font-lexend">Scroll to explore</span>
-          <ArrowDown className="w-5 h-5" />
-        </motion.div>
-      </motion.div>
+      {/* Bottom Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
     </section>
   );
 }
