@@ -1,229 +1,271 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Check, Users, Building, Crown, ArrowRight } from "lucide-react";
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { Phone, Calendar, Brain, MessageSquare, ArrowRight, PlayCircle, Zap, Shield, Clock, CheckCircle } from 'lucide-react';
 
-const plans = [
+const steps = [
   {
-    name: "Starter",
-    description: "Perfect for solopreneurs and small businesses",
-    features: [
-      "Up to 100 calls per month",
-      "Basic calendar integration",
-      "SMS & email notifications",
-      "Standard business hours",
-      "Basic call recording",
-      "Email support",
-    ],
-    icon: Users,
-    popular: false,
+    number: '01',
+    icon: Phone,
+    title: 'Connect Your Phone',
+    description: 'Get your dedicated AI Secretary number and share it with your contacts. Your AI is instantly ready to handle calls and texts.',
+    details: [
+      'Instant setup in under 2 minutes',
+      'Professional greeting customization',
+      'Smart call routing and screening'
+    ]
   },
   {
-    name: "Professional",
-    description: "Ideal for growing teams and busy professionals",
-    features: [
-      "Up to 500 calls per month",
-      "Advanced calendar synchronization",
-      "Smart routing & escalation",
-      "24/7 availability",
-      "Full conversation logs",
-      "Priority support",
-      "Custom greetings",
-      "Meeting preparation briefs",
-      "CRM integration",
-    ],
-    icon: Building,
-    popular: true,
+    number: '02',
+    icon: Calendar,
+    title: 'Sync Your Calendar',
+    description: 'Link Google Calendar, Outlook, or any major calendar service. Your AI knows your availability in real-time.',
+    details: [
+      'Two-way calendar synchronization',
+      'Multi-calendar support',
+      'Time zone intelligence'
+    ]
   },
   {
-    name: "Enterprise",
-    description: "For large organizations with complex needs",
-    features: [
-      "Unlimited calls",
-      "Multi-calendar management",
-      "Advanced AI training",
-      "Custom workflows",
-      "Department routing",
-      "Dedicated account manager",
-      "White-label options",
-      "API access",
-      "Advanced analytics",
-      "SSO integration",
-      "Custom integrations",
-    ],
-    icon: Crown,
-    popular: false,
+    number: '03',
+    icon: Brain,
+    title: 'Train Your Preferences',
+    description: 'Teach your AI Secretary your meeting preferences, communication style, and business rules.',
+    details: [
+      'Natural language training',
+      'Custom business logic',
+      'Personality customization'
+    ]
+  },
+  {
+    number: '04',
+    icon: MessageSquare,
+    title: 'Start Delegating',
+    description: 'Your AI handles scheduling, reminders, and follow-ups while you focus on what matters most.',
+    details: [
+      'Automated follow-ups',
+      'Smart reminder system',
+      'Detailed conversation logs'
+    ]
   },
 ];
 
-const faqs = [
+const useCases = [
   {
-    question: "How does the AI Secretary handle complex scheduling?",
-    answer:
-      "Our AI understands context, preferences, and scheduling conflicts. It can handle multi-party meetings, time zone conversions, and even reschedule meetings when conflicts arise.",
+    title: 'Executive Leadership',
+    description: 'Board meetings, investor calls, and strategic planning sessions managed seamlessly.',
+    icon: Shield,
   },
   {
-    question: "Can it integrate with my existing tools?",
-    answer:
-      "Yes. We integrate with Google Calendar, Outlook, Salesforce, HubSpot, Slack, and dozens of other popular business tools. Custom integrations available for Enterprise plans.",
+    title: 'Sales & Consulting',
+    description: 'Prospect calls, client meetings, and proposal follow-ups handled professionally.',
+    icon: Zap,
   },
   {
-    question: "Is my data secure?",
-    answer:
-      "Absolutely. We use bank-level encryption, comply with GDPR and CCPA, and never sell your data. All conversations are encrypted and stored securely.",
+    title: 'Healthcare & Legal',
+    description: 'Patient appointments, consultations, and compliance-ready communication.',
+    icon: Clock,
   },
   {
-    question: "What if the AI cannot handle a request?",
-    answer:
-      "The AI is trained to recognize its limitations and will seamlessly transfer complex requests to you or your team. You maintain full control.",
+    title: 'Creative & Freelance',
+    description: 'Client consultations, project kickoffs, and creative briefings scheduled effortlessly.',
+    icon: CheckCircle,
   },
 ];
 
-export default function Pricing() {
+// Interactive Step Animation Component
+const StepAnimation = ({ step, index }: { step: any, index: number }) => {
   return (
-    <section id="pricing" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        {/* Header */}
+    <motion.div
+      initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: index * 0.2 }}
+      viewport={{ once: true }}
+      className={`relative ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}
+    >
+      <div className="group relative">
+        {/* Step Number - Dark Design */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          whileHover={{ scale: 1.1 }}
+          className="absolute -left-6 lg:-left-8 top-8 z-10"
+        >
+          <div className="relative">
+            {/* Main number container */}
+            <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gray-900/90 backdrop-blur-sm border border-gray-700/50 rounded-2xl flex items-center justify-center shadow-2xl">
+              <span className="text-white font-bold text-xl lg:text-2xl font-lexend">{step.number}</span>
+            </div>
+            {/* Subtle glow effect */}
+            <div className="absolute inset-0 bg-white/5 rounded-2xl blur-sm -z-10"></div>
+          </div>
+        </motion.div>
+
+        {/* Content Card */}
+        <motion.div
+          whileHover={{ y: -10, scale: 1.02 }}
+          className="bg-gradient-to-br from-gray-900/40 to-gray-800/20 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 ml-6 lg:ml-8"
+        >
+          <div className="flex items-start gap-6">
+            <motion.div
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.5 }}
+              className="p-4 bg-gray-800/50 border border-gray-700/30 rounded-2xl"
+            >
+              <step.icon className="w-8 h-8 text-gray-300" />
+            </motion.div>
+            
+            <div className="flex-1">
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 font-lexend">{step.title}</h3>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6 font-lexend">{step.description}</p>
+              
+              <ul className="space-y-3">
+                {step.details.map((detail: string, detailIndex: number) => (
+                  <motion.li
+                    key={detailIndex}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.2 + detailIndex * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-3 text-gray-400 font-lexend"
+                  >
+                    <div className="w-2 h-2 bg-gray-500 rounded-full flex-shrink-0"></div>
+                    {detail}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default function HowItWorks() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  return (
+    <section id="how-it-works" className="py-20 bg-gradient-to-b from-[#0A0F1F] to-[#060A17] relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-gray-800/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gray-700/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
-            Choose Your Plan
+          <h2 className="text-5xl md:text-6xl font-lexend font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-6">
+            How It Works
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Transparent solutions designed to scale with your business needs.
-            All plans include comprehensive support and full feature access.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-lexend">
+            Get your AI Secretary up and running in minutes. No complex setup, no training required—just intelligent automation that works.
           </p>
         </motion.div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`relative ${plan.popular ? "lg:scale-105" : ""}`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-1 rounded-full text-sm font-medium">
-                  Most Popular
+        {/* Steps with Timeline */}
+        <div ref={ref} className="relative mb-20">
+          {/* Timeline Line - Dark Theme */}
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-gray-600 via-gray-700 to-gray-800 transform -translate-x-1/2 opacity-50"></div>
+          
+          <div className="space-y-16 lg:space-y-24">
+            {steps.map((step, index) => (
+              <div key={index} className={`lg:grid lg:grid-cols-2 lg:gap-16 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+                  <StepAnimation step={step} index={index} />
                 </div>
-              )}
-
-              <div
-                className={`bg-white rounded-2xl p-8 border-2 ${
-                  plan.popular ? "border-gray-900 shadow-lg" : "border-gray-200"
-                } h-full flex flex-col`}
-              >
-                {/* Header */}
-                <div className="text-center mb-8">
-                  <div className="inline-flex p-3 rounded-xl bg-gray-50 mb-4">
-                    <plan.icon className="w-6 h-6 text-gray-700" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                    {plan.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {plan.description}
-                  </p>
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-4 mb-8 flex-grow">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA Button */}
-                <button
-                  className={`w-full py-3 px-6 rounded-xl font-medium transition-all duration-200 ${
-                    plan.popular
-                      ? "bg-gray-900 text-white"
-                      : "bg-gray-50 text-gray-900 border border-gray-200"
-                  }`}
-                >
-                  Contact Us
-                </button>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* FAQ Section */}
+        {/* Use Cases */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-16"
         >
-          <h3 className="text-3xl font-light text-gray-900 text-center mb-12 tracking-tight">
-            Frequently Asked Questions
+          <h3 className="text-4xl font-lexend font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-12">
+            Perfect for Every Professional
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {faqs.map((faq, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {useCases.map((useCase, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-50 rounded-xl p-6"
+                whileHover={{ y: -10, scale: 1.05 }}
+                className="group relative"
               >
-                <h4 className="text-lg font-medium text-gray-900 mb-3 leading-snug">
-                  {faq.question}
-                </h4>
-                <p className="text-gray-600 leading-relaxed text-sm">
-                  {faq.answer}
-                </p>
+                <div className="bg-gradient-to-br from-gray-900/40 to-gray-800/20 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 h-full">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="inline-flex p-4 rounded-2xl bg-gray-800/50 border border-gray-700/30 mb-6"
+                  >
+                    <useCase.icon className="w-8 h-8 text-gray-300" />
+                  </motion.div>
+                  
+                  <h4 className="text-xl font-bold text-white mb-4 font-lexend">{useCase.title}</h4>
+                  <p className="text-gray-400 leading-relaxed font-lexend">{useCase.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Final CTA */}
+        {/* Demo Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center bg-gray-50 rounded-2xl p-12"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-gray-900/60 to-gray-800/40 border border-gray-700/30 p-12 text-center"
         >
-          <h3 className="text-3xl font-light text-gray-900 mb-4 tracking-tight">
-            Ready to Get Started?
-          </h3>
-          <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed">
-            Lets discuss how our AI Secretary can transform your business
-            operations and boost your productivity.
-          </p>
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute top-4 right-4 w-32 h-32 bg-gray-700/20 rounded-full blur-2xl"
+          />
+          <motion.div
+            animate={{ rotate: [360, 0] }}
+            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-4 left-4 w-40 h-40 bg-gray-600/20 rounded-full blur-2xl"
+          />
+          
+          <div className="relative z-10">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-lexend">
+              See It in Action
+            </h3>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-lexend">
+              Watch a real conversation between a client and an AI Secretary. Notice how natural, intelligent, and efficient it feels.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gray-900 text-white px-8 py-3 rounded-xl font-medium inline-flex items-center gap-2 transition-all duration-200">
-              Contact Our Team
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
-            <button className="px-8 py-3 bg-transparent border border-gray-300 text-gray-700 font-medium rounded-xl transition-all duration-200">
-              Schedule Demo
-            </button>
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.1)" }}
+              whileTap={{ scale: 0.95 }}
+              className="group inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all font-lexend"
+            >
+              <PlayCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              Watch 2-Minute Demo
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
           </div>
         </motion.div>
       </div>
     </section>
   );
 }
-

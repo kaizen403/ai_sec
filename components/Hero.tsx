@@ -2,15 +2,28 @@
 
 import { motion } from 'framer-motion';
 import { Bot, ArrowDown } from 'lucide-react';
+import { openCalendly } from '@/lib/utils';
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-[#0B0E15] via-[#0F141A] to-[#161C22] overflow-hidden flex items-center">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/3 to-purple-500/3 rounded-full blur-3xl"></div>
+        <motion.div
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ y: [0, 30, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"
+        />
         
         {/* Floating Particles */}
         {Array.from({ length: 20 }).map((_, i) => (
@@ -73,7 +86,7 @@ export default function Hero() {
           >
             Forge genuine connections—calls, texts, reminders, and answers that feel human.
             <span className="block mt-4 text-blue-400 font-medium text-lg">
-              Your AI Secretary works 24/7, never sleeps, and never forgets.
+              dont wait. shes not worth it. replace your secretary with rixie ai now!
             </span>
           </motion.p>
 
@@ -85,13 +98,14 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(59, 130, 246, 0.6)" }}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' }}
               whileTap={{ scale: 0.95 }}
+              onClick={openCalendly}
               className="group relative px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-700 text-white font-bold rounded-full text-xl shadow-2xl overflow-hidden font-lexend"
             >
               <span className="relative z-10 flex items-center gap-3">
                 <Bot className="w-6 h-6" />
-                Get Your AI Secretary
+                Book a Demo
               </span>
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600"

@@ -20,7 +20,7 @@ const footerLinks = {
     { name: 'Help Center', href: '#' },
     { name: 'Documentation', href: '#' },
     { name: 'API Reference', href: '#' },
-    { name: 'Contact', href: '#' },
+    { name: 'Contact', href: 'mailto:vrishi@kazdesk.in' },
   ],
   legal: [
     { name: 'Privacy Policy', href: '#' },
@@ -34,7 +34,7 @@ const socialLinks = [
   { icon: Twitter, href: '#', label: 'Twitter' },
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
   { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Mail, href: 'mailto:hello@aisecretaryapp.com', label: 'Email' },
+  { icon: Mail, href: 'mailto:vrishi@kazdesk.in', label: 'Email' },
 ];
 
 export default function Footer() {
@@ -54,10 +54,10 @@ export default function Footer() {
             >
               <div className="flex items-center space-x-2">
                 <Bot className="h-8 w-8 text-blue-400" />
-                <span className="text-2xl font-bold text-white font-lexend">AI Secretary</span>
+                <span className="text-2xl font-bold text-white font-lexend">Rixie AI</span>
               </div>
               <p className="text-gray-400 leading-relaxed max-w-sm font-lexend">
-                The AI that makes you fire your secretary. Forge genuine connections with calls, texts, and reminders that feel human.
+                Rixie AI makes you fire your secretary. Forge genuine connections with calls, texts, and reminders that feel human.
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
@@ -113,15 +113,15 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex items-center gap-3 text-gray-400">
               <Phone className="w-5 h-5 text-blue-400" />
-              <span className="font-lexend">+1 (555) 123-4567</span>
+              <span className="font-lexend">8639096590</span>
             </div>
             <div className="flex items-center gap-3 text-gray-400">
               <Mail className="w-5 h-5 text-blue-400" />
-              <span className="font-lexend">hello@aisecretaryapp.com</span>
+              <span className="font-lexend">vrishi@kazdesk.in</span>
             </div>
             <div className="flex items-center gap-3 text-gray-400">
               <MapPin className="w-5 h-5 text-blue-400" />
-              <span className="font-lexend">San Francisco, CA</span>
+              <span className="font-lexend">Hyderabad, India</span>
             </div>
           </div>
         </motion.div>
@@ -135,15 +135,8 @@ export default function Footer() {
           className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-gray-400 text-sm font-lexend">
-            © 2025 AI Secretary. All rights reserved.
+            © 2025 Rixie. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-sm">
-            <span className="text-gray-400 font-lexend">Built with ❤️ using Next.js</span>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-green-400 font-lexend">All systems operational</span>
-            </div>
-          </div>
         </motion.div>
       </div>
 
