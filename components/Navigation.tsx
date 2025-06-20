@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Bot } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn, openCalendly } from '@/lib/utils';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
             <Bot className="h-8 w-8 text-blue-400" />
-            <span className="text-xl font-bold text-white font-lexend">AI Secretary</span>
+            <span className="text-xl font-bold text-white font-lexend">Rixie AI</span>
           </div>
 
           <div className="hidden md:block">
@@ -49,9 +49,10 @@ export default function Navigation() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={openCalendly}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full font-medium font-lexend"
               >
-                Get Started
+                Book a Demo
               </motion.button>
             </div>
           </div>
@@ -84,8 +85,11 @@ export default function Navigation() {
             <a href="#pricing" className="block px-3 py-2 text-gray-300 hover:text-white font-lexend">
               Pricing
             </a>
-            <button className="w-full text-left bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-2 rounded-lg font-medium font-lexend">
-              Get Started
+            <button
+              className="w-full text-left bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-2 rounded-lg font-medium font-lexend"
+              onClick={openCalendly}
+            >
+              Book a Demo
             </button>
           </div>
         </motion.div>
