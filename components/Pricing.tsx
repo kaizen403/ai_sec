@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { Check, Users, Building, Crown, ArrowRight } from "lucide-react";
 
+import { openCalendly } from '@/lib/utils';
+
+
 const plans = [
   {
     name: "Starter",
@@ -58,7 +61,9 @@ const plans = [
 
 const faqs = [
   {
-    question: "How does the AI Secretary handle complex scheduling?",
+
+    question: "How does Rixie AI handle complex scheduling?",
+
     answer:
       "Our AI understands context, preferences, and scheduling conflicts. It can handle multi-party meetings, time zone conversions, and even reschedule meetings when conflicts arise.",
   },
@@ -164,17 +169,22 @@ export default function Pricing() {
                 </ul>
 
                 {/* CTA Button */}
-                <motion.button
+                <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+
+                  href="mailto:vrishi@kazdesk.in"
                   className={`w-full py-3 px-6 rounded-xl font-bold transition-all duration-300 font-lexend ${
                     plan.popular
-                      ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
-                      : "bg-white/10 text-white hover:bg-white/20"
+                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
+                      : 'bg-white/10 text-white hover:bg-white/20'
                   }`}
                 >
                   Contact Us
-                </motion.button>
+                </motion.a>
+
+                  
+
               </div>
             </motion.div>
           ))}
@@ -223,30 +233,35 @@ export default function Pricing() {
           className="text-center bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/10 rounded-3xl p-12 relative overflow-hidden"
         >
           <h3 className="text-3xl font-bold text-white mb-4 font-lexend">
-            Ready to Get Started?
+
+            Ready to Book a Demo?
           </h3>
           <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto leading-relaxed font-lexend">
-            Lets discuss how our AI Secretary can transform your business
-            operations and boost your productivity.
+            Lets discuss how Rixie AI can transform your business operations and boost your productivity.
+
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(147, 51, 234, 0.5)' }}
               whileTap={{ scale: 0.95 }}
+
+              onClick={openCalendly}
               className="group bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-bold inline-flex items-center gap-2 shadow-2xl font-lexend"
             >
-              Contact Our Team
+              Book a Demo
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </motion.button>
 
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              href="mailto:vrishi@kazdesk.in"
               className="px-8 py-3 bg-transparent border border-white/20 text-white font-bold rounded-full transition-colors font-lexend hover:bg-white/10"
             >
-              Schedule Demo
-            </motion.button>
+              Contact Us
+            </motion.a>
+
           </div>
 
           {/* Background decoration */}
@@ -265,3 +280,4 @@ export default function Pricing() {
     </section>
   );
 }
+

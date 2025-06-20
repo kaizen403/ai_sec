@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Bot, ArrowDown } from 'lucide-react';
+import { openCalendly } from '@/lib/utils';
 
 export default function Hero() {
   return (
@@ -85,7 +86,7 @@ export default function Hero() {
           >
             Forge genuine connections—calls, texts, reminders, and answers that feel human.
             <span className="block mt-4 text-blue-400 font-medium text-lg">
-              Your AI Secretary works 24/7, never sleeps, and never forgets.
+              dont wait. shes not worth it. replace your secretary with rixie ai now!
             </span>
           </motion.p>
 
@@ -97,13 +98,14 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(59, 130, 246, 0.6)" }}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' }}
               whileTap={{ scale: 0.95 }}
+              onClick={openCalendly}
               className="group relative px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-700 text-white font-bold rounded-full text-xl shadow-2xl overflow-hidden font-lexend"
             >
               <span className="relative z-10 flex items-center gap-3">
                 <Bot className="w-6 h-6" />
-                Get Your AI Secretary
+                Book a Demo
               </span>
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600"
