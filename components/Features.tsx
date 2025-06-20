@@ -90,18 +90,18 @@ export default function Features() {
     <section id="features" className="py-24 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-transparent to-cyan-900/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 via-transparent to-cyan-900/10"></div>
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-cyan-400/50 rounded-full"
+            className="absolute w-1 h-1 bg-cyan-400/30 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
               scale: [0, 1, 0],
-              opacity: [0, 1, 0],
+              opacity: [0, 0.5, 0],
             }}
             transition={{
               duration: 3,
@@ -141,7 +141,7 @@ export default function Features() {
               whileHover={{ y: -10, scale: 1.02 }}
               className="group relative"
             >
-              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-cyan-400/50 transition-all duration-300 h-full">
+              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-cyan-400/30 transition-all duration-300 h-full">
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
@@ -164,9 +164,9 @@ export default function Features() {
                   {capability.description}
                 </p>
 
-                {/* Hover Glow Effect */}
+                {/* Subtle Hover Glow Effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
             </motion.div>
@@ -190,28 +190,28 @@ export default function Features() {
                 }}
                 className="group relative perspective-1000"
               >
-                <div className="relative bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/30 hover:border-cyan-400/50 transition-all duration-500 h-full transform-gpu">
-                  {/* Animated Border */}
+                <div className="relative bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/30 hover:border-cyan-400/30 transition-all duration-500 h-full transform-gpu">
+                  {/* Subtle Animated Border */}
                   <motion.div
                     className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{
                       background: `linear-gradient(45deg, ${feature.color.split(' ')[1]}, ${feature.color.split(' ')[3]})`,
-                      padding: '2px',
+                      padding: '1px',
                     }}
                   >
                     <div className="w-full h-full bg-gray-900 rounded-3xl"></div>
                   </motion.div>
 
                   <div className="relative z-10">
-                    {/* Icon with Holographic Effect */}
+                    {/* Icon with Subtle Effect */}
                     <motion.div
                       whileHover={{ scale: 1.2, rotate: 10 }}
                       className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.color} mb-6 relative`}
                     >
                       <feature.icon className="w-8 h-8 text-white" />
                       <motion.div
-                        className="absolute inset-0 rounded-2xl bg-white/20"
-                        animate={{ opacity: [0, 0.5, 0] }}
+                        className="absolute inset-0 rounded-2xl bg-white/10"
+                        animate={{ opacity: [0, 0.3, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       />
                     </motion.div>
@@ -228,12 +228,12 @@ export default function Features() {
                       {feature.description}
                     </p>
 
-                    {/* Particle Effect on Hover */}
+                    {/* Subtle Particle Effect on Hover */}
                     <div className="absolute inset-0 pointer-events-none">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {Array.from({ length: 3 }).map((_, i) => (
                         <motion.div
                           key={i}
-                          className="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100"
+                          className="absolute w-1 h-1 bg-cyan-400/50 rounded-full opacity-0 group-hover:opacity-100"
                           style={{
                             left: `${Math.random() * 100}%`,
                             top: `${Math.random() * 100}%`,
@@ -265,15 +265,15 @@ export default function Features() {
           viewport={{ once: true }}
           className="mt-24 relative"
         >
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-purple-900/30 via-gray-900/30 to-cyan-900/30 border border-gray-700/50 p-12 text-center">
-            {/* Animated Background Pattern */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-purple-900/20 via-gray-900/30 to-cyan-900/20 border border-gray-700/50 p-12 text-center">
+            {/* Subtle Animated Background Pattern */}
             <div className="absolute inset-0">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
                 className="absolute top-0 left-0 w-full h-full"
                 style={{
-                  background: 'conic-gradient(from 0deg, transparent, rgba(147, 51, 234, 0.1), transparent, rgba(6, 182, 212, 0.1), transparent)',
+                  background: 'conic-gradient(from 0deg, transparent, rgba(147, 51, 234, 0.05), transparent, rgba(6, 182, 212, 0.05), transparent)',
                 }}
               />
             </div>
@@ -294,8 +294,7 @@ export default function Features() {
               <motion.button
                 whileHover={{ 
                   scale: 1.05, 
-                  boxShadow: "0 0 50px rgba(147, 51, 234, 0.8)",
-                  textShadow: "0 0 20px rgba(255, 255, 255, 0.8)"
+                  boxShadow: "0 0 25px rgba(147, 51, 234, 0.4)"
                 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-purple-600 to-cyan-600 text-white px-10 py-4 rounded-full font-bold text-lg shadow-2xl relative overflow-hidden font-lexend"

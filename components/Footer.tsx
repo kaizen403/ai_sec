@@ -47,14 +47,14 @@ export default function Footer() {
         {Array.from({ length: 15 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-cyan-400/30 rounded-full"
+            className="absolute w-1 h-1 bg-cyan-400/20 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
               scale: [0, 1, 0],
-              opacity: [0, 1, 0],
+              opacity: [0, 0.5, 0],
             }}
             transition={{
               duration: 4,
@@ -103,7 +103,7 @@ export default function Footer() {
                   <motion.div
                     key={index}
                     className="text-center p-3 bg-gray-800/30 rounded-lg border border-gray-700/30"
-                    whileHover={{ scale: 1.05, borderColor: 'rgba(6, 182, 212, 0.5)' }}
+                    whileHover={{ scale: 1.05, borderColor: 'rgba(6, 182, 212, 0.3)' }}
                   >
                     <stat.icon className="w-5 h-5 text-cyan-400 mx-auto mb-1" />
                     <div className="text-sm font-bold text-white font-lexend">{stat.value}</div>
@@ -120,10 +120,10 @@ export default function Footer() {
                     whileHover={{ 
                       scale: 1.2, 
                       y: -3,
-                      boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)'
+                      boxShadow: '0 0 15px rgba(6, 182, 212, 0.3)'
                     }}
                     whileTap={{ scale: 0.9 }}
-                    className="bg-gray-800/50 p-3 rounded-lg text-gray-400 hover:text-cyan-400 hover:bg-gray-700/50 transition-all border border-gray-700/30 hover:border-cyan-400/50"
+                    className="bg-gray-800/50 p-3 rounded-lg text-gray-400 hover:text-cyan-400 hover:bg-gray-700/50 transition-all border border-gray-700/30 hover:border-cyan-400/30"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
@@ -219,14 +219,14 @@ export default function Footer() {
         </motion.div>
       </div>
 
-      {/* Animated Bottom Border */}
+      {/* Subtle Animated Bottom Border */}
       <motion.div 
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
         animate={{ 
           background: [
-            'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), transparent)',
-            'linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.5), transparent)',
-            'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), transparent)',
+            'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent)',
+            'linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.3), transparent)',
+            'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent)',
           ]
         }}
         transition={{ duration: 4, repeat: Infinity }}

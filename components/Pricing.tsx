@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Users, Building, Crown, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { Check, Users, Building, Crown, ArrowRight, ChevronDown } from 'lucide-react';
 import { openCalendly } from '@/lib/utils';
 
 const plans = [
@@ -95,14 +95,14 @@ export default function Pricing() {
         {Array.from({ length: 30 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-px h-px bg-cyan-400/30"
+            className="absolute w-px h-px bg-cyan-400/20"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
               scale: [0, 1, 0],
-              opacity: [0, 1, 0],
+              opacity: [0, 0.5, 0],
             }}
             transition={{
               duration: 4,
@@ -130,7 +130,7 @@ export default function Pricing() {
           </p>
         </motion.div>
 
-        {/* Pricing Cards - Hexagonal Design */}
+        {/* Pricing Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
           {plans.map((plan, index) => (
             <motion.div
@@ -153,7 +153,7 @@ export default function Pricing() {
                   animate={{ opacity: 1, y: 0 }}
                   className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20"
                 >
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-bold font-lexend neon-border">
+                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-bold font-lexend border border-purple-400/30">
                     MOST POPULAR
                   </div>
                 </motion.div>
@@ -161,13 +161,13 @@ export default function Pricing() {
 
               <div className={`relative bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-xl rounded-3xl p-8 border transition-all duration-500 h-full ${
                 plan.popular 
-                  ? "border-purple-500/50 hover:border-purple-400" 
-                  : "border-gray-700/30 hover:border-cyan-400/50"
+                  ? "border-purple-500/30 hover:border-purple-400/50" 
+                  : "border-gray-700/30 hover:border-cyan-400/30"
               }`}>
                 
-                {/* Animated Background */}
+                {/* Subtle Animated Background */}
                 <motion.div
-                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500"
                   style={{
                     background: plan.popular 
                       ? 'linear-gradient(45deg, #8b5cf6, #ec4899)' 
@@ -224,7 +224,7 @@ export default function Pricing() {
                     href="mailto:vrishi@kazdesk.in"
                     className={`block w-full py-4 px-6 rounded-2xl font-bold text-center transition-all duration-300 font-lexend ${
                       plan.popular
-                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-purple-500/50'
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-purple-500/25'
                         : 'bg-gray-800/50 text-white hover:bg-gray-700/50 border border-gray-600'
                     }`}
                   >
@@ -232,12 +232,12 @@ export default function Pricing() {
                   </motion.a>
                 </div>
 
-                {/* Particle Effects */}
+                {/* Subtle Particle Effects */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
-                  {Array.from({ length: 8 }).map((_, i) => (
+                  {Array.from({ length: 5 }).map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-1 h-1 bg-cyan-400/50 rounded-full opacity-0 group-hover:opacity-100"
+                      className="absolute w-1 h-1 bg-cyan-400/30 rounded-full opacity-0 group-hover:opacity-100"
                       style={{
                         left: `${Math.random() * 100}%`,
                         top: `${Math.random() * 100}%`,
@@ -259,7 +259,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* FAQ Section - Cyberpunk Style */}
+        {/* FAQ Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -281,10 +281,10 @@ export default function Pricing() {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl rounded-2xl border border-gray-700/30 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden">
+                <div className="bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl rounded-2xl border border-gray-700/30 hover:border-cyan-400/30 transition-all duration-300 overflow-hidden">
                   <motion.button
                     onClick={() => toggleFaq(index)}
-                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-800/20 transition-colors"
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-800/10 transition-colors"
                     whileHover={{ x: 5 }}
                   >
                     <h4 className="text-lg font-bold text-white font-lexend pr-4">
@@ -308,7 +308,7 @@ export default function Pricing() {
                         className="overflow-hidden"
                       >
                         <div className="px-6 pb-6">
-                          <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent mb-4"></div>
+                          <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent mb-4"></div>
                           <p className="text-gray-300 leading-relaxed font-lexend">
                             {faq.answer}
                           </p>
@@ -322,7 +322,7 @@ export default function Pricing() {
           </div>
         </motion.div>
 
-        {/* Final CTA - Holographic Style */}
+        {/* Final CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -330,10 +330,10 @@ export default function Pricing() {
           viewport={{ once: true }}
           className="relative"
         >
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-purple-900/30 via-gray-900/30 to-cyan-900/30 border border-gray-700/50 p-12 text-center">
-            {/* Animated Holographic Background */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-purple-900/20 via-gray-900/30 to-cyan-900/20 border border-gray-700/50 p-12 text-center">
+            {/* Subtle Animated Background */}
             <motion.div
-              className="absolute inset-0 opacity-30"
+              className="absolute inset-0 opacity-20"
               animate={{
                 background: [
                   'linear-gradient(45deg, #8b5cf6, #06b6d4)',
@@ -347,13 +347,7 @@ export default function Pricing() {
             <div className="relative z-10">
               <motion.h3
                 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-6 font-lexend"
-                animate={{ 
-                  textShadow: [
-                    '0 0 20px rgba(6, 182, 212, 0.5)',
-                    '0 0 40px rgba(147, 51, 234, 0.5)',
-                    '0 0 20px rgba(6, 182, 212, 0.5)',
-                  ]
-                }}
+                animate={{ scale: [1, 1.02, 1] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
                 READY TO BOOK A DEMO?
@@ -367,8 +361,7 @@ export default function Pricing() {
                 <motion.button
                   whileHover={{ 
                     scale: 1.05, 
-                    boxShadow: '0 0 50px rgba(147, 51, 234, 0.8)',
-                    textShadow: '0 0 20px rgba(255, 255, 255, 0.8)'
+                    boxShadow: '0 0 30px rgba(147, 51, 234, 0.4)'
                   }}
                   whileTap={{ scale: 0.95 }}
                   onClick={openCalendly}
@@ -387,7 +380,7 @@ export default function Pricing() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href="mailto:vrishi@kazdesk.in"
-                  className="px-10 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 font-bold rounded-full transition-all font-lexend hover:bg-cyan-400/10 hover:shadow-lg hover:shadow-cyan-400/50"
+                  className="px-10 py-4 bg-transparent border-2 border-cyan-400/50 text-cyan-400 font-bold rounded-full transition-all font-lexend hover:bg-cyan-400/5 hover:shadow-lg hover:shadow-cyan-400/25"
                 >
                   CONTACT US
                 </motion.a>

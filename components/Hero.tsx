@@ -15,14 +15,14 @@ export default function Hero() {
         {Array.from({ length: 50 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-px bg-gradient-to-b from-transparent via-green-400 to-transparent"
+            className="absolute w-px bg-gradient-to-b from-transparent via-green-400/30 to-transparent"
             style={{
               left: `${Math.random() * 100}%`,
               height: `${Math.random() * 100 + 100}px`,
             }}
             animate={{
               y: ['-100vh', '100vh'],
-              opacity: [0, 1, 0],
+              opacity: [0, 0.5, 0],
             }}
             transition={{
               duration: Math.random() * 3 + 2,
@@ -54,7 +54,7 @@ export default function Hero() {
               ease: 'linear',
             }}
           >
-            <div className="w-16 h-16 border border-cyan-400/30 rotate-45 bg-gradient-to-r from-purple-500/10 to-cyan-500/10"></div>
+            <div className="w-16 h-16 border border-cyan-400/20 rotate-45 bg-gradient-to-r from-purple-500/5 to-cyan-500/5"></div>
           </motion.div>
         ))}
       </div>
@@ -63,23 +63,20 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            {/* Glitch Effect Title */}
+            {/* Title */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
               <div className="relative">
-                <h1 
-                  className="text-6xl md:text-7xl font-black leading-tight"
-                  data-text="RIXIE AI"
-                >
-                  <span className="holographic font-lexend">RIXIE AI</span>
+                <h1 className="text-6xl md:text-7xl font-black leading-tight font-lexend">
+                  <span className="holographic">RIXIE AI</span>
                 </h1>
                 <motion.div
-                  animate={{ opacity: [0, 1, 0] }}
+                  animate={{ opacity: [0, 0.3, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute -top-2 -left-2 text-6xl md:text-7xl font-black text-red-500/30 font-lexend"
+                  className="absolute -top-2 -left-2 text-6xl md:text-7xl font-black text-red-500/20 font-lexend"
                 >
                   RIXIE AI
                 </motion.div>
@@ -96,13 +93,13 @@ export default function Hero() {
                 The AI That Makes You
               </h2>
               <div className="relative inline-block">
-                <span className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent neon-text font-lexend">
+                <span className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent font-lexend">
                   FIRE YOUR SECRETARY
                 </span>
                 <motion.div
                   animate={{ scaleX: [0, 1, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-yellow-500"
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500/50 to-yellow-500/50"
                 />
               </div>
             </motion.div>
@@ -130,7 +127,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={openCalendly}
-                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg text-lg overflow-hidden neon-border font-lexend"
+                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg text-lg overflow-hidden border border-purple-400/30 font-lexend"
               >
                 <span className="relative z-10 flex items-center gap-3">
                   <Bot className="w-6 h-6" />
@@ -148,7 +145,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 font-bold rounded-lg text-lg hover:bg-cyan-400/10 transition-all font-lexend"
+                className="px-8 py-4 bg-transparent border-2 border-cyan-400/50 text-cyan-400 font-bold rounded-lg text-lg hover:bg-cyan-400/5 transition-all font-lexend"
               >
                 Watch Demo
               </motion.button>
@@ -187,12 +184,12 @@ export default function Hero() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="relative w-48 h-48 rounded-full border-4 border-cyan-400/50 flex items-center justify-center"
+                className="relative w-48 h-48 rounded-full border-4 border-cyan-400/30 flex items-center justify-center"
               >
                 <motion.div
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="w-32 h-32 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 flex items-center justify-center"
+                  className="w-32 h-32 rounded-full bg-gradient-to-r from-purple-500/80 to-cyan-500/80 flex items-center justify-center"
                 >
                   <Cpu className="w-16 h-16 text-white" />
                 </motion.div>
@@ -202,7 +199,7 @@ export default function Hero() {
               {Array.from({ length: 6 }).map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-4 h-4 bg-cyan-400 rounded-full"
+                  className="absolute w-4 h-4 bg-cyan-400/70 rounded-full"
                   animate={{
                     rotate: 360,
                   }}
@@ -221,14 +218,14 @@ export default function Hero() {
               {Array.from({ length: 3 }).map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute rounded-full border border-purple-500/30"
+                  className="absolute rounded-full border border-purple-500/20"
                   style={{
                     width: `${200 + i * 60}px`,
                     height: `${200 + i * 60}px`,
                   }}
                   animate={{
                     scale: [1, 1.1, 1],
-                    opacity: [0.3, 0.6, 0.3],
+                    opacity: [0.2, 0.4, 0.2],
                   }}
                   transition={{
                     duration: 3 + i,

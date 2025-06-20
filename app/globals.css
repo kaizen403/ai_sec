@@ -81,15 +81,15 @@
   }
 }
 
-/* Custom Animations */
+/* Custom Animations - Reduced Glow */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.6); }
+  0%, 100% { box-shadow: 0 0 10px rgba(147, 51, 234, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3); }
 }
 
 @keyframes gradient-shift {
@@ -98,15 +98,10 @@
   100% { background-position: 0% 50%; }
 }
 
-@keyframes neon-flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
 @keyframes matrix-rain {
   0% { transform: translateY(-100vh); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
+  10% { opacity: 0.3; }
+  90% { opacity: 0.3; }
   100% { transform: translateY(100vh); opacity: 0; }
 }
 
@@ -123,11 +118,6 @@
   animation: gradient-shift 3s ease infinite;
 }
 
-.neon-text {
-  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
-  animation: neon-flicker 2s ease-in-out infinite alternate;
-}
-
 .matrix-bg {
   position: relative;
   overflow: hidden;
@@ -140,7 +130,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.03), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.02), transparent);
   animation: matrix-rain 3s linear infinite;
 }
 
@@ -172,105 +162,11 @@
   border-top: 27.5px solid #764ba2;
 }
 
-/* Glitch Effect */
-.glitch {
-  position: relative;
-  color: white;
-  font-size: 4rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  animation: glitch-skew 1s infinite linear alternate-reverse;
-}
-
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.glitch::before {
-  animation: glitch-anim 0.5s infinite linear alternate-reverse;
-  color: #ff0000;
-  z-index: -1;
-}
-
-.glitch::after {
-  animation: glitch-anim2 1s infinite linear alternate-reverse;
-  color: #00ffff;
-  z-index: -2;
-}
-
-@keyframes glitch-anim {
-  0% { clip: rect(42px, 9999px, 44px, 0); }
-  5% { clip: rect(12px, 9999px, 59px, 0); }
-  10% { clip: rect(48px, 9999px, 29px, 0); }
-  15% { clip: rect(42px, 9999px, 73px, 0); }
-  20% { clip: rect(63px, 9999px, 27px, 0); }
-  25% { clip: rect(34px, 9999px, 55px, 0); }
-  30% { clip: rect(86px, 9999px, 73px, 0); }
-  35% { clip: rect(20px, 9999px, 20px, 0); }
-  40% { clip: rect(26px, 9999px, 60px, 0); }
-  45% { clip: rect(25px, 9999px, 66px, 0); }
-  50% { clip: rect(57px, 9999px, 98px, 0); }
-  55% { clip: rect(5px, 9999px, 46px, 0); }
-  60% { clip: rect(82px, 9999px, 31px, 0); }
-  65% { clip: rect(54px, 9999px, 27px, 0); }
-  70% { clip: rect(28px, 9999px, 99px, 0); }
-  75% { clip: rect(45px, 9999px, 69px, 0); }
-  80% { clip: rect(23px, 9999px, 85px, 0); }
-  85% { clip: rect(54px, 9999px, 84px, 0); }
-  90% { clip: rect(45px, 9999px, 47px, 0); }
-  95% { clip: rect(37px, 9999px, 20px, 0); }
-  100% { clip: rect(4px, 9999px, 91px, 0); }
-}
-
-@keyframes glitch-anim2 {
-  0% { clip: rect(65px, 9999px, 100px, 0); }
-  5% { clip: rect(52px, 9999px, 74px, 0); }
-  10% { clip: rect(79px, 9999px, 85px, 0); }
-  15% { clip: rect(75px, 9999px, 5px, 0); }
-  20% { clip: rect(67px, 9999px, 61px, 0); }
-  25% { clip: rect(14px, 9999px, 79px, 0); }
-  30% { clip: rect(1px, 9999px, 66px, 0); }
-  35% { clip: rect(86px, 9999px, 30px, 0); }
-  40% { clip: rect(23px, 9999px, 98px, 0); }
-  45% { clip: rect(85px, 9999px, 72px, 0); }
-  50% { clip: rect(71px, 9999px, 75px, 0); }
-  55% { clip: rect(2px, 9999px, 48px, 0); }
-  60% { clip: rect(30px, 9999px, 16px, 0); }
-  65% { clip: rect(59px, 9999px, 50px, 0); }
-  70% { clip: rect(41px, 9999px, 62px, 0); }
-  75% { clip: rect(2px, 9999px, 82px, 0); }
-  80% { clip: rect(47px, 9999px, 73px, 0); }
-  85% { clip: rect(3px, 9999px, 27px, 0); }
-  90% { clip: rect(26px, 9999px, 55px, 0); }
-  95% { clip: rect(42px, 9999px, 97px, 0); }
-  100% { clip: rect(38px, 9999px, 49px, 0); }
-}
-
-@keyframes glitch-skew {
-  0% { transform: skew(0deg); }
-  10% { transform: skew(-2deg); }
-  20% { transform: skew(1deg); }
-  30% { transform: skew(-1deg); }
-  40% { transform: skew(2deg); }
-  50% { transform: skew(-1deg); }
-  60% { transform: skew(0deg); }
-  70% { transform: skew(1deg); }
-  80% { transform: skew(-2deg); }
-  90% { transform: skew(2deg); }
-  100% { transform: skew(0deg); }
-}
-
 /* Cyberpunk Grid */
 .cyber-grid {
   background-image: 
-    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: grid-move 20s linear infinite;
 }
@@ -280,7 +176,7 @@
   100% { background-position: 50px 50px; }
 }
 
-/* Holographic Effect */
+/* Holographic Effect - Reduced Intensity */
 .holographic {
   background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
   background-size: 400% 400%;
@@ -296,30 +192,48 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Neon Border */
+/* Neon Border - Reduced Glow */
 .neon-border {
   border: 2px solid #00ffff;
   box-shadow: 
-    0 0 5px #00ffff,
-    inset 0 0 5px #00ffff,
-    0 0 20px #00ffff,
-    inset 0 0 20px #00ffff;
+    0 0 3px #00ffff,
+    inset 0 0 3px #00ffff,
+    0 0 10px #00ffff,
+    inset 0 0 10px #00ffff;
   animation: neon-pulse 2s ease-in-out infinite alternate;
 }
 
 @keyframes neon-pulse {
   from {
     box-shadow: 
-      0 0 5px #00ffff,
-      inset 0 0 5px #00ffff,
-      0 0 20px #00ffff,
-      inset 0 0 20px #00ffff;
+      0 0 3px #00ffff,
+      inset 0 0 3px #00ffff,
+      0 0 10px #00ffff,
+      inset 0 0 10px #00ffff;
   }
   to {
     box-shadow: 
-      0 0 10px #00ffff,
-      inset 0 0 10px #00ffff,
-      0 0 40px #00ffff,
-      inset 0 0 40px #00ffff;
+      0 0 5px #00ffff,
+      inset 0 0 5px #00ffff,
+      0 0 15px #00ffff,
+      inset 0 0 15px #00ffff;
   }
+}
+
+/* Text Readability Improvements */
+.text-glow-subtle {
+  text-shadow: 0 0 5px rgba(6, 182, 212, 0.3);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 5px rgba(147, 51, 234, 0.3);
+}
+
+/* Reduced Particle Opacity */
+.particle-low {
+  opacity: 0.3;
+}
+
+.particle-medium {
+  opacity: 0.5;
 }

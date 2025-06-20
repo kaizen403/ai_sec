@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Bot, Zap } from 'lucide-react';
 import { cn, openCalendly } from '@/lib/utils';
 
@@ -74,7 +74,7 @@ export default function Navigation() {
               <motion.button
                 whileHover={{ 
                   scale: 1.05,
-                  boxShadow: '0 0 20px rgba(147, 51, 234, 0.5)'
+                  boxShadow: '0 0 15px rgba(147, 51, 234, 0.3)'
                 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={openCalendly}
